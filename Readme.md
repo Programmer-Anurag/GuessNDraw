@@ -44,8 +44,16 @@ bash git clone https://github.com/your-username/your-repo-name.git cd your-repo-
 #### Backend
 bash cd server npm install 
 
+set environment varibale
+MONGO_URL
+PORT=3000
+CLIENT_URL
+
 #### Frontend
 bash cd client npm install 
+set environment varibale
+VITE_API_URL
+
 
 ---
 
@@ -61,7 +69,8 @@ bash cd client npm run dev
 
 ## 🌐 Live Demo
 
-👉 Play the Game
+👉 Play the Game.
+  https://guess-n-draw-ten.vercel.app/
 
 ---
 
