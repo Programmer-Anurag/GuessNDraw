@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import app from "./src/app.js";
+import cors from "cors";
 import {createServer} from "node:http"
 // import { connectDB } from "./src/config/db.js";
 import { configDotenv } from "dotenv";
