@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 
 export default function Canvas({ socket, roomCode, roomSetting }) {
 
-    // 🧠 STATE
+    //  STATE
     const [gameState, setGameState] = useState({
         phase: "waiting",
         currentTurn: 0,
@@ -23,7 +23,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
 
 
 
-    // 🎨 CANVAS SETUP
+    //  CANVAS SETUP
     useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = 900;
@@ -37,7 +37,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
         ctxRef.current = ctx;
     }, []);
 
-    // 🟢 DRAW EVENTS
+    //  DRAW EVENTS
     const startDrawing = (e) => {
         if (!isDrawer) return;
 
@@ -71,7 +71,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
         socket.emit("draw_end", { roomCode });
     };
 
-    // 🔵 RECEIVE DRAW
+    // RECEIVE DRAW
     useEffect(() => {
         socket.on("draw_start", ({ x, y }) => {
             ctxRef.current.beginPath();
@@ -99,7 +99,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
         };
     }, [socket]);
 
-    // 🧹 CLEAR
+    // CLEAR
     const clearCanvas = () => {
         if (!isDrawer) return;
 
@@ -108,7 +108,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
     };
 
 
-    // 🎮 GAME EVENTS
+    //  GAME EVENTS
     useEffect(() => {
 
         const handleTurnUpdate = ({ playerId, currentRound }) => {
@@ -166,7 +166,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
         socket.emit("ready_for_game", { roomCode,roomSetting });
     }, [socket]);
 
-    // ⏱ TIMER
+    //  TIMER
     useEffect(() => {
         if (phase !== "drawing") return;
         setTime(roomSetting.drawTime);
@@ -220,7 +220,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
 
             </div>
 
-            {/* 🟡 WORD CHOOSE OVERLAY */}
+            {/*  WORD CHOOSE OVERLAY */}
             {phase === "choosing" && (
                 <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 backdrop-blur-sm">
 
@@ -264,7 +264,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
 
             )}
 
-            {/* 🎨 CANVAS */}
+            {/*  CANVAS */}
             <div className="flex-1 flex justify-center items-center bg-gray-100">
 
                 <canvas
@@ -278,7 +278,7 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
 
             </div>
 
-            {/* 🧰 TOOLBAR */}
+            {/* TOOLBAR */}
             <div className="flex justify-between items-center px-4 py-2 bg-gray-200 rounded-b-xl">
 
                 <div className="flex gap-2">

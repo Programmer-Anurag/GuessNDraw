@@ -8,13 +8,9 @@ export default function PlayerList({socket}) {
     useEffect(() => {
 
     socket.on("correct_guess", ({ playerId, players }) => {
-
         console.log("Correct guess by:", playerId);
-
-        // ✅ update players list (score updated)
-
+        // update players list (score updated)
         setPlayers(players);
-
     });
 
     return () => socket.off("correct_guess");

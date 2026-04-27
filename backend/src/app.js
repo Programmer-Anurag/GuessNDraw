@@ -1,6 +1,8 @@
 import express from "express"
 import cors from "cors"
 import generateRoomCode from "./utils/generateRoomId.js";
+import { configDotenv } from "dotenv";
+configDotenv();
 
 const app = express();
 app.use(cors({
