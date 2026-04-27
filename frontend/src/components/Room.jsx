@@ -62,20 +62,14 @@ export default function Room() {
 
 
   useEffect(() => {
-  //   const handler = ({ game }) => {
-  //   if (game.isStarted) {
-  //     setScreen("Game");
-  //   }
-  // };
-  socket.on("started_game", ({game})=>{
-    console.log(game.isStarted);
-    
+    const handler = ({ game }) => {
     if (game.isStarted) {
       setScreen("Game");
     }
-  });
+  };
+  socket.on("started_game", handler);
 
-  return () => socket.off("started_game");
+  return () => socket.off("started_game",handler);
   }, [setScreen]);
 
 

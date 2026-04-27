@@ -114,6 +114,8 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
         const handleTurnUpdate = ({ playerId, currentRound }) => {
 
             console.log("turn update", playerId);
+            
+            
 
             setGameState(prev => ({
 
@@ -163,6 +165,8 @@ export default function Canvas({ socket, roomCode, roomSetting }) {
 
 
     useEffect(() => {
+        console.log("ready for game fire");
+        
         socket.emit("ready_for_game", { roomCode,roomSetting });
     }, [socket]);
 
